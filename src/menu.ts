@@ -15,7 +15,7 @@ export type DrinkMenuItem = {
 export const drinkMenu: DrinkMenuItem[] = [
     {
         id: 101,
-        name: "Vodka & Soda & Malina",
+        name: "Vodka Soda Malina",
         price: 85,
         description: "Vodka, malinový sirup, soda",
         subcategory: "spritz",
@@ -260,13 +260,13 @@ export const vinoMenu: DrinkMenuItem[] = [
 ];
 
 export const alkoMichaneNapojeMenu: DrinkMenuItem[] = [
+    { id: 807, name: "Cointreau Spritz", price: 89, description: "Cointreau, pom. a citr. šťáva, soda" },
     { id: 801, name: "Morgan & Cola", price: 75, description: "džbánek 4× 290 Kč, kýbl 10× 700 Kč" },
     { id: 802, name: "Vodka s džusem", price: 75, description: "džbánek 4× 290 Kč, kýbl 10× 700 Kč" },
     { id: 803, name: "Gin (Pink) & Tonic", price: 75, description: "" },
     { id: 804, name: "Létající jelen", volume: "8 cl", price: 49, description: "Jagermaister & Red Bull" },
     { id: 805, name: "Cupito", volume: "4 cl", price: 49, description: "Cointreau, ovocná šťáva, třešnička" },
     { id: 806, name: "Včelka", volume: "8 cl", price: 55, description: "Metaxa honey, Red Bull tropical" },
-    { id: 807, name: "Cointreau Spritz", price: 89, description: "Cointreau, pom. a citr. šťáva, soda" },
 ];
 
 export const lahvoveNapojeMenu: DrinkMenuItem[] = [

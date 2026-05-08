@@ -3,6 +3,7 @@
   --text-main: #f2e9d8;
   --text-dim: #bba689;
   --accent-gold: #c69b59;
+  --accent-gold-muted: rgba(198, 155, 89, 0.45);
 }
 
 .print-container {
@@ -156,4 +157,133 @@
     page-break-after: auto;
     break-after: auto;
   }
+}
+
+/* ── Cover page ── */
+.cover-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12mm 14mm;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-color);
+}
+
+/* Corner decorations */
+.cover-page::before,
+.cover-page::after {
+  content: '';
+  position: absolute;
+  width: 28mm;
+  height: 28mm;
+  border-color: var(--accent-gold-muted);
+  border-style: solid;
+  opacity: 0.6;
+}
+.cover-page::before {
+  top: 8mm; left: 8mm;
+  border-width: 1px 0 0 1px;
+}
+.cover-page::after {
+  bottom: 8mm; right: 8mm;
+  border-width: 0 1px 1px 0;
+}
+
+.cover-top-ornament,
+.cover-bottom-ornament {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.6rem;
+}
+
+.cover-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--accent-gold-muted), transparent);
+}
+
+.cover-diamond {
+  color: var(--accent-gold);
+  font-size: 0.55rem;
+  opacity: 0.7;
+}
+
+.cover-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.cover-est {
+  margin: 0;
+  font-family: 'Montserrat', 'Inter', sans-serif;
+  font-size: 0.7rem;
+  color: var(--accent-gold);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.cover-title {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.05;
+}
+
+.cover-subtitle-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: 85%;
+}
+
+.cover-thin-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(198, 155, 89, 0.35);
+}
+
+.cover-subtitle {
+  font-family: 'Montserrat', 'Inter', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  white-space: nowrap;
+}
+
+.cover-icon {
+  font-size: 2.8rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 14px rgba(198, 155, 89, 0.5));
+  margin: 0.3rem 0;
+}
+
+.cover-tagline {
+  margin: 0;
+  font-family: 'Montserrat', 'Inter', sans-serif;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  line-height: 1.7;
+}
+
+.cover-footer {
+  font-family: 'Montserrat', 'Inter', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: var(--accent-gold);
+  opacity: 0.55;
+  text-transform: uppercase;
 }

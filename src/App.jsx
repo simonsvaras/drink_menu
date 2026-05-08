@@ -26,9 +26,33 @@ function App() {
 
   return (
     <div className="print-container">
-      <div className="a5-page">
-        <h1 className="page-title">Přední strana</h1>
-        <p style={{ textAlign: 'center', marginTop: '2rem' }}>Prostor pro název, logo atd.</p>
+      <div className="a5-page cover-page">
+        <div className="cover-top-ornament">
+          <div className="cover-line"></div>
+          <div className="cover-diamond">◆</div>
+          <div className="cover-line"></div>
+        </div>
+        <div className="cover-body">
+          <p className="cover-est">V Nýrsku od roku 1992</p>
+          <h1 className="cover-title">Milano</h1>
+          <div className="cover-subtitle-wrapper">
+          </div>
+
+
+          <div className="cover-subtitle-wrapper" style={{}}>
+            <div className="cover-thin-line"></div>
+            <span className="cover-subtitle">Nápojový lístek</span>
+            <div className="cover-thin-line"></div>
+          </div>
+
+        </div>
+
+        <div className="cover-bottom-ornament">
+          <div className="cover-line"></div>
+          <div className="cover-diamond">◆</div>
+          <div className="cover-line"></div>
+        </div>
+
       </div>
       <div className="a5-page compact-page">
         <div className="lemonade-section">
@@ -67,6 +91,13 @@ function App() {
             <NealkoItem key={drink.id} {...drink} />
           ))}
         </div>
+
+        <h2 className="category-title mt-small">Káva</h2>
+        <div className="menu-list two-columns">
+          {kavaMenu.map(drink => (
+            <DrinkItem key={drink.id} {...drink} />
+          ))}
+        </div>
       </div>
 
       <div className="a5-page compact-page">
@@ -93,9 +124,16 @@ function App() {
       </div>
 
       <div className="a5-page compact-page">
-        <h2 className="category-title">Káva</h2>
+        <h2 className="category-title">Piva</h2>
+        <h3 style={{ fontSize: '1rem', color: 'var(--text-main)', marginTop: '0.5rem', marginBottom: '0.5rem' }}>Točené</h3>
         <div className="menu-list two-columns">
-          {kavaMenu.map(drink => (
+          {pivaTocene.map(drink => (
+            <DrinkItem key={drink.id} {...drink} />
+          ))}
+        </div>
+        <h3 style={{ fontSize: '1rem', color: 'var(--text-main)', marginTop: '0.5rem', marginBottom: '0.5rem' }}>Lahvové</h3>
+        <div className="menu-list two-columns">
+          {pivaLahvove.map(drink => (
             <DrinkItem key={drink.id} {...drink} />
           ))}
         </div>
@@ -119,21 +157,7 @@ function App() {
       </div>
 
       <div className="a5-page compact-page">
-        <h2 className="category-title">Piva</h2>
-        <h3 style={{ fontSize: '1rem', color: 'var(--text-main)', marginTop: '0.5rem', marginBottom: '0.5rem' }}>Točené</h3>
-        <div className="menu-list two-columns">
-          {pivaTocene.map(drink => (
-            <DrinkItem key={drink.id} {...drink} />
-          ))}
-        </div>
-        <h3 style={{ fontSize: '1rem', color: 'var(--text-main)', marginTop: '0.5rem', marginBottom: '0.5rem' }}>Lahvové</h3>
-        <div className="menu-list two-columns">
-          {pivaLahvove.map(drink => (
-            <DrinkItem key={drink.id} {...drink} />
-          ))}
-        </div>
-
-        <h2 className="category-title mt-small">Vína</h2>
+        <h2 className="category-title">Vína</h2>
         <div className="two-columns">
           <div style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
             <h3 style={{ fontSize: '1rem', color: 'var(--text-main)', marginTop: 0, marginBottom: '0.2rem' }}>Rozlévaná</h3>
