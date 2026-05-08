@@ -1,0 +1,65 @@
+.drink-item {
+  margin-bottom: 1.2rem;
+  width: 100%;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.drink-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 0.1rem;
+}
+
+.drink-name {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+  letter-spacing: 0.02em;
+  white-space: normal;
+  padding-right: 5px;
+}
+
+.drink-dots {
+  flex-grow: 1;
+  border-bottom: 2px dotted rgba(198, 155, 89, 0.4);
+  margin: 0 5px;
+  position: relative;
+  top: -4px;
+}
+
+.drink-price {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--accent-gold);
+  white-space: nowrap;
+}
+
+.drink-description {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  font-style: italic;
+  white-space: normal;
+  line-height: 1.2;
+}
+
+/* Compact overrides pro stranu, kde je moc položek (2 sloupce) */
+.compact-page .drink-item {
+  margin-bottom: 0.8rem;
+}
+
+.compact-page .drink-name {
+  font-size: 1rem;
+}
+
+.compact-page .drink-price {
+  font-size: 1.05rem;
+}
+
+.compact-page .drink-description {
+  font-size: 0.75rem;
+}

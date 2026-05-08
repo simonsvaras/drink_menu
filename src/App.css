@@ -1,0 +1,159 @@
+:root {
+  --bg-color: #111111;
+  --text-main: #f2e9d8;
+  --text-dim: #bba689;
+  --accent-gold: #c69b59;
+}
+
+.print-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #2a2a2a; 
+  min-height: 100vh;
+}
+
+.a5-page {
+  width: 148mm;
+  height: 210mm;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+  padding: 15mm; 
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+.compact-page {
+  padding: 10mm 10mm;
+}
+
+.page-title {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border-bottom: 1px solid rgba(198, 155, 89, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+.category-title {
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid rgba(198, 155, 89, 0.2);
+  padding-bottom: 0.3rem;
+  column-span: all;
+}
+
+.mt-small {
+  margin-top: 1.2rem;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.two-columns {
+  display: block;
+  column-count: 2;
+  column-gap: 1.5rem;
+}
+
+.lemonade-section {
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.lemonade-text {
+  width: 100%;
+}
+
+.lemonade-variants {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+  padding-left: 0.8rem;
+  border-left: 2px solid rgba(198, 155, 89, 0.5); /* Zlatá linka */
+}
+
+.variant-item {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.variant-name {
+  font-weight: 600;
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+.variant-desc {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+/* Specific overrides to make Lemonades slightly larger and more spaced out */
+.compact-page .lemonade-section .limonada-item {
+  margin-bottom: 0.1rem;
+}
+
+.lemonade-section .drink-name {
+  font-size: 1.25rem;
+}
+
+.lemonade-section .drink-price {
+  font-size: 1.15rem;
+}
+
+@media print {
+  @page {
+    size: A5 portrait;
+    margin: 0;
+  }
+
+  body {
+    background-color: var(--bg-color);
+    margin: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .print-container {
+    background-color: transparent;
+    padding: 0;
+    gap: 0;
+    display: block; 
+  }
+
+  .a5-page {
+    box-shadow: none;
+    margin: 0;
+    width: 148mm;
+    height: 210mm;
+    page-break-after: always;
+    break-after: page;
+  }
+  
+  .a5-page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+}
