@@ -238,10 +238,8 @@ export const tepleNapojeMenu: DrinkMenuItem[] = [
 ];
 
 export const pivoMenu: DrinkMenuItem[] = [
-    { id: 601, name: "Radegast 10°", volume: "0,5 l", price: 49, description: "", subcategory: "tocene" },
-    { id: 602, name: "Radegast 10°", volume: "0,3 l", price: 35, description: "", subcategory: "tocene" },
-    { id: 603, name: "Radegast 12°", volume: "0,5 l", price: 59, description: "", subcategory: "tocene" },
-    { id: 604, name: "Radegast 12°", volume: "0,3 l", price: 44, description: "", subcategory: "tocene" },
+    { id: 601, name: "Radegast 10°", volume: "0,5 l", price: 49, volume2: "0,3 l", price2: 35, description: "", subcategory: "tocene" },
+    { id: 603, name: "Radegast 12°", volume: "0,5 l", price: 59, volume2: "0,3 l", price2: 44, description: "", subcategory: "tocene" },
     { id: 605, name: "Prazdroj 12°", volume: "0,5 l", price: 59, description: "", subcategory: "lahvove" },
     { id: 606, name: "Birell nealko", volume: "0,5 l", price: 49, description: "Světlý, Pomelo Grep/Mango (plech)", subcategory: "lahvove" },
     { id: 608, name: "Frisco", volume: "0,33 l", price: 49, description: "", subcategory: "lahvove" },
@@ -253,29 +251,29 @@ export const vinoMenu: DrinkMenuItem[] = [
     { id: 705, name: "Pálava", price: 29, price2: 135, description: "sladké", subcategory: "bile_vino" },
     { id: 707, name: "J.P. Chenet – Merlot", price: 29, price2: 135, description: "červené, suché", subcategory: "cervene_vino" },
     { id: 711, name: "Prosecco", price: 29, price2: 135, description: "", subcategory: "bile_vino" },
-    { id: 712, name: "Vinný střik", volume: "2 dl", price: 35, description: "víno, soda", subcategory: "striky" },
-    { id: 713, name: "Vinný střik spritz", volume: "2 dl", price: 69, description: "víno, soda, meloun / růže", subcategory: "striky" },
-    { id: 714, name: "Prosecco střik MIMOSA", volume: "2,2 dl", price: 69, description: "pomeranč", subcategory: "striky" },
-    { id: 715, name: "Prosecco střik mango", volume: "2,2 dl", price: 69, description: "", subcategory: "striky" },
+    { id: 712, name: "Vinný střik", price: 35, description: "víno, soda", subcategory: "striky" },
+    { id: 713, name: "Vinný střik spritz", price: 69, description: "víno, soda, meloun / růže", subcategory: "striky" },
+    { id: 714, name: "Prosecco střik MIMOSA", price: 69, description: "pomeranč", subcategory: "striky" },
+    { id: 715, name: "Prosecco střik mango", price: 69, description: "", subcategory: "striky" },
 ];
 
 export const alkoMichaneNapojeMenu: DrinkMenuItem[] = [
-    { id: 807, name: "Cointreau Spritz", price: 89, description: "Cointreau, pom. a citr. šťáva, soda" },
-    { id: 801, name: "Morgan & Cola", price: 75, description: "džbánek 4× 290 Kč, kýbl 10× 700 Kč" },
-    { id: 802, name: "Vodka s džusem", price: 75, description: "džbánek 4× 290 Kč, kýbl 10× 700 Kč" },
-    { id: 803, name: "Gin (Pink) & Tonic", price: 75, description: "" },
-    { id: 804, name: "Létající jelen", volume: "8 cl", price: 49, description: "Jagermaister & Red Bull" },
-    { id: 805, name: "Cupito", volume: "4 cl", price: 49, description: "Cointreau, ovocná šťáva, třešnička" },
-    { id: 806, name: "Včelka", volume: "8 cl", price: 55, description: "Metaxa honey, Red Bull tropical" },
+    { id: 801, name: "Cointreau Spritz", price: 89, description: "Cointreau, pom. a citr. šťáva, soda" },
+    { id: 802, name: "Morgan & Cola", price: 75, description: "džbánek 4× 290 Kč, kýbl 10× 700 Kč" },
+    { id: 803, name: "Vodka s džusem", price: 75, description: "džbánek 4× 290 Kč, kýbl 10× 700 Kč" },
+    { id: 804, name: "Gin (Pink) & Tonic", price: 75, description: "" },
+    { id: 805, name: "Létající jelen", volume: "8 cl", price: 49, description: "Jagermaister & Red Bull" },
+    { id: 806, name: "Cupito", volume: "4 cl", price: 49, description: "Cointreau, ovocná šťáva, třešnička" },
+    { id: 807, name: "Včelka", volume: "8 cl", price: 55, description: "Metaxa honey, Red Bull tropical" },
 ];
 
 export const lahvoveNapojeMenu: DrinkMenuItem[] = [
     { id: 901, name: "Coca Cola", volume: "3,3 dl", price: 49, description: "Normal, Zero" },
     { id: 902, name: "Fanta, Sprite", volume: "3,3 dl", price: 49, description: "" },
     { id: 903, name: "Tonic", volume: "2,5 dl", price: 49, description: "classic, pink, ginger" },
+    { id: 906, name: "Red Bull", volume: "2,5 dl", price: 59, description: "Normal, Tropical" },
     { id: 904, name: "Mattoni", volume: "3 dl", price: 39, description: "Perlivá, Jemně Perlivá" },
     { id: 905, name: "Aquila neperlivá", volume: "3 dl", price: 39, description: "" },
-    { id: 906, name: "Red Bull", volume: "2,5 dl", price: 59, description: "Normal, Tropical" },
 ];
 
 export const rozlevaneNapojeMenu: DrinkMenuItem[] = [

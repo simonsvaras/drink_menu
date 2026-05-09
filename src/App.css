@@ -12,7 +12,7 @@
   align-items: center;
   gap: 2rem;
   padding: 2rem;
-  background-color: #2a2a2a; 
+  background-color: #2a2a2a;
   min-height: 100vh;
 }
 
@@ -23,7 +23,7 @@
   color: var(--text-main);
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
-  padding: 15mm; 
+  padding: 15mm;
   box-sizing: border-box;
   overflow: hidden;
   position: relative;
@@ -50,7 +50,7 @@
   text-align: left;
   margin-top: 0;
   margin-bottom: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.45rem;
   font-weight: 700;
   color: var(--accent-gold);
   text-transform: uppercase;
@@ -90,7 +90,8 @@
   gap: 0.4rem;
   margin-bottom: 1.5rem;
   padding-left: 0.8rem;
-  border-left: 2px solid rgba(198, 155, 89, 0.5); /* Zlatá linka */
+  border-left: 2px solid rgba(198, 155, 89, 0.5);
+  /* Zlatá linka */
 }
 
 .variant-item {
@@ -141,7 +142,7 @@
     background-color: transparent;
     padding: 0;
     gap: 0;
-    display: block; 
+    display: block;
   }
 
   .a5-page {
@@ -152,7 +153,7 @@
     page-break-after: always;
     break-after: page;
   }
-  
+
   .a5-page:last-child {
     page-break-after: auto;
     break-after: auto;
@@ -172,6 +173,19 @@
   background-color: var(--bg-color);
 }
 
+/* Half-page cover used when merged with content below */
+.cover-half {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 95mm;
+  padding: 5mm 4mm 6mm;
+  margin-bottom: 4mm;
+  position: relative;
+}
+
 /* Corner decorations */
 .cover-page::before,
 .cover-page::after {
@@ -183,12 +197,16 @@
   border-style: solid;
   opacity: 0.6;
 }
+
 .cover-page::before {
-  top: 8mm; left: 8mm;
+  top: 8mm;
+  left: 8mm;
   border-width: 1px 0 0 1px;
 }
+
 .cover-page::after {
-  bottom: 8mm; right: 8mm;
+  bottom: 8mm;
+  right: 8mm;
   border-width: 0 1px 1px 0;
 }
 
@@ -277,6 +295,11 @@
   color: var(--text-dim);
   letter-spacing: 0.08em;
   line-height: 1.7;
+}
+
+.tight-list .drink-item,
+.compact-page .tight-list .drink-item {
+  margin-bottom: 0.1rem !important;
 }
 
 .cover-footer {
