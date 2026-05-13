@@ -1,14 +1,56 @@
 import './App.css'
+import { useState } from 'react'
 import DrinkItem from './components/DrinkItem'
 import NealkoItem from './components/NealkoItem'
 import LimonadaItem from './components/LimonadaItem'
 import {
   drinkMenu, nealkoDrinkMenu, limonadaMenu,
-  kavaMenu, tepleNapojeMenu, pivoMenu, vinoMenu,
-  alkoMichaneNapojeMenu, lahvoveNapojeMenu, rozlevaneNapojeMenu, horkeNapojeMenu
+  kavaMenu, pivoMenu, vinoMenu,
+  alkoMichaneNapojeMenu, lahvoveNapojeMenu, rozlevaneNapojeMenu
 } from './menu'
 
 function App() {
+  const [isExporting, setIsExporting] = useState(false);
+
+  const exportPagesToPdf = async () => {
+    if (isExporting) return;
+
+    const pages = Array.from(document.querySelectorAll('.a5-page'));
+
+    if (!pages.length) return;
+
+    setIsExporting(true);
+
+    try {
+      const [{ default: html2canvas }, { jsPDF }] = await Promise.all([
+        import('html2canvas'),
+        import('jspdf'),
+      ]);
+
+      for (const [index, page] of pages.entries()) {
+        const canvas = await html2canvas(page, {
+          backgroundColor: '#111111',
+          scale: 2,
+          useCORS: true,
+        });
+
+        const imageData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF({
+          orientation: 'portrait',
+          unit: 'mm',
+          format: 'a5',
+        });
+
+        pdf.addImage(imageData, 'PNG', 0, 0, 148, 210);
+        pdf.save(`milano-napojovy-listek-strana-${index + 1}.pdf`);
+
+        await new Promise(resolve => window.setTimeout(resolve, 250));
+      }
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
   const spritzDrinks = drinkMenu.filter(d => d.subcategory === 'spritz').sort((a, b) => b.price - a.price);
   const classicDrinks = drinkMenu.filter(d => d.subcategory === 'classic').sort((a, b) => b.price - a.price);
   const tropicalDrinks = drinkMenu.filter(d => d.subcategory === 'tropical').sort((a, b) => b.price - a.price);
@@ -26,6 +68,15 @@ function App() {
 
   return (
     <div className="print-container">
+      <button
+        className="pdf-export-button"
+        type="button"
+        onClick={exportPagesToPdf}
+        disabled={isExporting}
+      >
+        {isExporting ? 'Exportuji PDF...' : 'Export PDF'}
+      </button>
+
       <div className="a5-page compact-page">
         <div className="cover-half">
           <div className="cover-top-ornament">
@@ -42,6 +93,10 @@ function App() {
               <div className="cover-thin-line"></div>
             </div>
           </div>
+          <div className="cover-qr-block">
+            <img className="cover-qr-image" src="/QR.png" alt="QR kód pro vizuální prohlídku" />
+            <span className="cover-qr-label">vizuální prohlídka</span>
+          </div>
           <div className="cover-bottom-ornament">
             <div className="cover-line"></div>
             <div className="cover-diamond">◆</div>
@@ -51,7 +106,7 @@ function App() {
 
         <div className="lemonade-section">
           <div className="lemonade-text">
-            <h2 className="category-title" style={{ borderBottom: 'none', marginBottom: '0.5rem' }}>Limonády</h2>
+            <h2 className="category-title" style={{ marginBottom: '0.5rem', '--title-divider-opacity': 0 }}>Limonády</h2>
 
             <div className="lemonade-variants-wrapper" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.1rem' }}>
               <div className="lemonade-variants" style={{ marginBottom: 0, flex: 1 }}>
@@ -81,8 +136,11 @@ function App() {
       </div>
 
       <div className="a5-page compact-page">
-        <h2 className="category-title">Nealkoholické nápoje</h2>
-        <div className="menu-list two-columns">
+        <h2 className="category-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          Nealkoholické nápoje
+          <img src="/nealko_napoje.png" alt="Nealkoholické nápoje" style={{ marginTop: '-0.35em', marginLeft: '0.8rem', height: '1.7em', verticalAlign: 'middle', opacity: 0.92, filter: 'drop-shadow(0 0 6px rgba(198,155,89,0.3))' }} />
+        </h2>
+        <div className="menu-list two-columns nealko-napoje-list">
           {lahvoveNapojeMenu.map(drink => (
             <DrinkItem key={drink.id} {...drink} />
           ))}
@@ -91,14 +149,20 @@ function App() {
           ))}
         </div>
 
-        <h2 className="category-title mt-small">Káva</h2>
+        <h2 className="category-title mt-small" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          Káva
+          <img src="/kava.png" alt="Káva" style={{ marginTop: '-0.35em', marginLeft: '0.8rem', height: '1.7em', verticalAlign: 'middle', opacity: 0.92, filter: 'drop-shadow(0 0 6px rgba(198,155,89,0.3))' }} />
+        </h2>
         <div className="menu-list two-columns">
           {kavaMenu.map(drink => (
             <DrinkItem key={drink.id} {...drink} />
           ))}
         </div>
 
-        <h2 className="category-title mt-small">Nealko koktejly</h2>
+        <h2 className="category-title mt-small" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          Nealko koktejly
+          <img src="/nealko_koktejly.png" alt="Nealko koktejly" style={{ marginTop: '-0.35em', marginLeft: '0.8rem', height: '1.7em', verticalAlign: 'middle', opacity: 0.92, filter: 'drop-shadow(0 0 6px rgba(198,155,89,0.3))' }} />
+        </h2>
         <div className="menu-list two-columns">
           {sortedNealkoDrinks.map(drink => (
             <NealkoItem key={drink.id} {...drink} />
@@ -107,7 +171,10 @@ function App() {
       </div>
 
       <div className="a5-page compact-page">
-        <h2 className="category-title">Spritz & osvěžující</h2>
+        <h2 className="category-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          Spritz & osvěžující
+          <img src="/Aperol.png" alt="Aperol" style={{ marginTop: '-0.5em', marginLeft: '0.8rem', height: '2.3em', verticalAlign: 'middle', opacity: 0.92, filter: 'drop-shadow(0 0 6px rgba(198,155,89,0.3))' }} />
+        </h2>
         <div className="menu-list two-columns">
           {spritzDrinks.map(drink => (
             <DrinkItem key={drink.id} {...drink} />
@@ -140,9 +207,9 @@ function App() {
               {pivaTocene.map(drink => (
                 <div key={drink.id}>
                   <div style={{ fontWeight: 600, fontSize: '1rem', color: 'var(--text-main)', marginBottom: '0.1rem' }}>{drink.name}</div>
-                  <div style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>
-                    <span>{drink.volume} / <span style={{ color: 'var(--accent-gold)', fontWeight: 600 }}>{drink.price} Kč</span></span>
-                    {drink.price2 && <><span style={{ margin: '0 0.5rem', opacity: 0.4 }}>·</span><span>{drink.volume2} / <span style={{ color: 'var(--accent-gold)', fontWeight: 600 }}>{drink.price2} Kč</span></span></>}
+                  <div style={{ fontSize: '0.92rem', color: 'var(--text-dim)' }}>
+                    <span>{drink.volume} / <span style={{ color: 'var(--accent-gold)', fontWeight: 600, fontSize: '1.04em' }}>{drink.price} Kč</span></span>
+                    {drink.price2 && <><span style={{ margin: '0 0.5rem', opacity: 0.4 }}>·</span><span>{drink.volume2} / <span style={{ color: 'var(--accent-gold)', fontWeight: 600, fontSize: '1.04em' }}>{drink.price2} Kč</span></span></>}
                   </div>
                 </div>
               ))}
@@ -161,8 +228,8 @@ function App() {
           </div>
         </div>
 
-        <h2 className="category-title mt-small">Alkoholické míchané nápoje</h2>
-        <div className="menu-list two-columns">
+        <h2 className="category-title mt-small" style={{ marginTop: '0.7rem' }}>Alkoholické míchané nápoje</h2>
+        <div className="menu-list two-columns alko-mix-list">
           {alkoMichaneNapojeMenu.map(drink => (
             <DrinkItem key={drink.id} {...drink} />
           ))}
